@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Hair Studio - Premium Salon Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 150px 5% 100px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Style Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-item-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .gallery-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Location Info */
+        .location-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .location-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .location-card p {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .location-card strong {
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .location-info {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Luxe Hair Studio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="fade-in">
+            <h1>Transform Your Look</h1>
+            <p>Experience luxury hair styling with our expert team of professionals</p>
+            <a href="#booking" class="cta-button">Book Your Appointment</a>
+        </div>
+    </section>
+
+    <!-- Style Gallery -->
+    <section id="gallery" class="section">
+        <h2>Our Style Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=250&fit=crop" alt="Modern Cut">
+                <div class="gallery-item-content">
+                    <h3>Modern Cuts</h3>
+                    <p>Contemporary styling that perfectly frames your face and lifestyle</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=250&fit=crop" alt="Color Transformation">
+                <div class="gallery-item-content">
+                    <h3>Color Transformations</h3>
+                    <p>Vibrant colors and subtle highlights to enhance your natural beauty</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=250&fit=crop" alt="Bridal Styling">
+                <div class="gallery-item-content">
+                    <h3>Bridal Styling</h3>
+                    <p>Elegant updos and romantic styles for your special day</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=250&fit=crop" alt="Curly Hair Care">
+                <div class="gallery-item-content">
+                    <h3>Curly Hair Specialist</h3>
+                    <p>Expert care and styling for all curl types and textures</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1560869713-7d0b29837409?w=400&h=250&fit=crop" alt="Men's Styling">
+                <div class="gallery-item-content">
+                    <h3>Men's Styling</h3>
+                    <p>Classic and contemporary cuts tailored to your personal style</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=250&fit=crop" alt="Hair Treatments">
+                <div class="gallery-item-content">
+                    <h3>Hair Treatments</h3>
+                    <p>Nourishing treatments to restore health and shine to your hair</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking" class="section">
+        <h2>Book Your Appointment</h2>
+        <form class="booking-form fade-in" id="bookingForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="service">Service *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="cut">Haircut</option>
+                        <option value="color">Hair Coloring</option>
+                        <option value="highlights">Highlights</option>
+                        <option value="treatment">Hair Treatment</option>
+                        <option value="styling">Special Event Styling</option>
+                        <option value="bridal">Bridal Package</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="stylist">Preferred Stylist</label>
+                    <select id="stylist" name="stylist">
+                        <option value="">No preference</option>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="mike">Mike Chen</option>
+                        <option value="lisa">Lisa Rodriguez</option>
+                        <option value="alex">Alex Thompson</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Preferred Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Preferred Time *</label>
+                    <select id="time" name="time" required>
+                        <option value="">Select time</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Special Requests or Notes</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="Let us know about any allergies, specific requests, or other information..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Book Appointment</button>
+        </form>
+    </section>
+
+    <!-- Location Info -->
+    <section id="location" class="section">
+        <h2>Visit Our Studio</h2>
+        <div class="location-info">
+            <div class="location-card fade-in">
+                <h3>📍 Address</h3>
+                <p><strong>Luxe Hair Studio</strong></p>
+                <p>123 Beauty Boulevard</p>
+                <p>Downtown District</p>
+                <p>Petaling Jaya, Selangor 47400</p>
+                <p>Malaysia</p>
+            </div>
+            <div class="location-card fade-in">
+                <h3>🕒 Hours</h3>
+                <p><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 6:00 PM</p>
+                <p><strong>Sunday:</strong> 10:00 AM - 5:00 PM</p>
+                <p><strong>Closed:</strong> Public Holidays</p>
+            </div>
+        </div>
+        <div class="location-info">
+            <div class="location-card fade-in">
+                <h3>📞 Contact</h3>
+                <p><strong>Phone:</strong> +603-7956-1234</p>
+                <p><strong>WhatsApp:</strong> +6012-345-6789</p>
+                <p><strong>Email:</strong> hello@luxehairstudio.my</p>
+                <p><strong>Instagram:</strong> @luxehairstudio</p>
+            </div>
+            <div class="location-card fade-in">
+                <h3>🚗 Parking & Access</h3>
+                <p><strong>Parking:</strong> Free covered parking available</p>
+                <p><strong>Public Transport:</strong> 5 min walk from PJ MRT</p>
+                <p><strong>Accessibility:</strong> Wheelchair accessible</p>
+                <p><strong>Nearby:</strong> Sunway Pyramid, PJ State</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Luxe Hair Studio</h3>
+            <p>Your trusted partner in hair transformation since 2020</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="WhatsApp">💬</a>
+                <a href="#" aria-label="Google Reviews">⭐</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2025 Luxe Hair Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ff6b6b';
+                } else {
+                    field.style.borderColor = '#e0e0e0';
+                }
+            });
+            
+            if (isValid) {
+                // Simulate form submission
+                alert('Thank you for your booking request! We will contact you within 24 hours to confirm your appointment.');
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.gallery-item, .booking-form, .location-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
